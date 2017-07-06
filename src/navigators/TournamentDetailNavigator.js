@@ -1,26 +1,16 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
 import {
-  Alert
-} from 'react-native';
-import {
-  Container,
-  Header,
-  Title,
-  Content,
   Footer,
   FooterTab,
   Button,
-  Left, Right,
-  Body,
-  Icon,
   Text
 } from 'native-base';
 
 
-import FixtureScreen from '../containers/FixtureScreen';
-import PositionsScreen from '../containers/PositionsScreen';
-import ScoresScreen from '../containers/ScoresScreen';
+import FixtureScreen from '../components/tournaments/FixtureScreen';
+import PositionsScreen from '../components/tournaments/PositionsScreen';
+import ScoresScreen from '../components/tournaments/ScoresScreen';
 
 const routeConfiguration = {
     Fixture: {
@@ -46,22 +36,25 @@ const tabBarConfiguration = {
             vertical
             active={props.navigationState.index === 0}
             onPress={() => {
-              props.navigation.navigate("Fixture")
-            } }>
+              props.navigation.navigate('Fixture')
+            }}
+          >
             <Text>Fixture</Text>
           </Button>
           <Button
             vertical
             active={props.navigationState.index === 1}
             onPress={() => {
-              props.navigation.navigate("Positions")
-            }}>
+              props.navigation.navigate('Positions')
+            }}
+          >
             <Text>Positions</Text>
           </Button>
           <Button
             vertical
             active={props.navigationState.index === 2}
-            onPress={() => props.navigation.navigate("Scores")}>
+            onPress={() => props.navigation.navigate('Scores')}
+          >
             <Text>Scores</Text>
           </Button>
         </FooterTab>
@@ -70,5 +63,5 @@ const tabBarConfiguration = {
   }
 }
 
-export default TournamentDetailNavConfig =
+export default TournamentDetailNavigator =
   TabNavigator(routeConfiguration, tabBarConfiguration);

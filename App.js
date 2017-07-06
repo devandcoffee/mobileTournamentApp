@@ -1,10 +1,8 @@
 import React from 'react';
 import { Container, Text } from 'native-base';
 import { Font } from 'expo';
-import { Provider } from 'react-redux';
 
-import store from './src/store';
-import AppNav from './src/containers/AppNav';
+import AppNavigator from './src/navigators/AppNavigator';
 
 export default class App extends React.Component {
   state = {
@@ -12,10 +10,10 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-    this._loadAssetsAsync();
+    this.loadAssetsAsync();
   }
 
-  _loadAssetsAsync = async () => {
+  loadAssetsAsync = async () => {
     await Font.loadAsync({
       Roboto: require('native-base/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
@@ -29,14 +27,13 @@ export default class App extends React.Component {
     }
 
     return (
-      <Provider store={store}>
         <Container
           style={{
             paddingTop: 22
-          }}>
-          <AppNav />
+          }}
+        >
+          <AppNavigator />
         </Container>
-      </Provider>
     );
   }
 }

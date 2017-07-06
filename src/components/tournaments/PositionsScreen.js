@@ -4,9 +4,8 @@ import {
   Content,
   Text
 } from 'native-base';
-import { NavigationActions } from 'react-navigation';
 
-import styles from '../Styles';
+import styles from '../../styles/Styles';
 
 export default class PositionsScreen extends Component{
    render(){

@@ -4,7 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
-import styles from '../Styles';
+import styles from '../styles/Styles';
 
 export const LoadingView = (props) => (
   <View style={ styles.container }>
