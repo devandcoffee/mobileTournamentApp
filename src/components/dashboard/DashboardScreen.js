@@ -5,14 +5,14 @@ import {
   Text
 } from 'native-base';
 
-import Toolbar from '../presentationals/Toolbar';
-import styles from '../Styles';
+import Toolbar from '../Toolbar';
+import styles from '../../styles/Styles';
 
-export default class DashboardScreen extends React.Component{
-   render(){
-    return(
+export default class DashboardScreen extends React.Component {
+   render() {
+    return (
       <Container>
-        <Toolbar  navigation={this.props.navigation} title="Dashboard" leftButtonIcon="menu"/>
+        <Toolbar navigation={this.props.navigation} title="Dashboard" leftButtonIcon="menu" />
         <Content contentContainerStyle={styles.container}>
           <Text style={{ fontFamily: 'Roboto' }}>
             Dashboard Light

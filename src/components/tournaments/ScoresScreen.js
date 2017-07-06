@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 
-import styles from '../Styles';
+import styles from '../../styles/Styles';
 
 export default class ScoresScreen extends Component{
    render(){

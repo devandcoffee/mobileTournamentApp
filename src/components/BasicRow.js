@@ -6,7 +6,7 @@ import {
 import {
   Content,
 } from 'native-base';
-import generalStyles  from '../Styles';
+import generalStyles from '../styles/Styles';
 
 export const BasicRow = (props) => {
 
