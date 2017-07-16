@@ -8,57 +8,119 @@ import {
   Body,
   Icon,
 } from 'native-base';
+import { View, StyleSheet } from 'react-native';
+
+import { SearchBar } from './SearchBar';
 
 export default class Toolbar extends React.Component {
-
-  createLeftButton(){
-    return (
-      <Left>
-        <Button transparent onPress={ () => {
-          switch (this.props.leftButtonIcon){
-            case 'menu' :
-              this.props.navigation.navigate("DrawerOpen");
-              break;
-            case 'arrow-back' :
-              this.props.navigation.goBack();
-              break;
-          }
-        }}>
-          <Icon name={this.props.leftButtonIcon} />
-        </Button>
-      </Left>
-    );
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFilterActive: false,
+    };
   }
 
-  createRightButton(){
+  createButton(button) {
     return (
-      <Right>
-         <Button transparent>
-          <Icon name={this.props.rightButtonIcon} />
-         </Button>
-      </Right>
-    );
+      <Button 
+        transparent 
+        onPress={() => {
+          if (button.icon === 'search') {
+            this.setState({
+              isFilterActive: true,
+            })
+          } else {
+            button.action();
+          }      
+        }}
+      >
+        <Icon name={button.icon} />
+      </Button>
+    )
+  }
+  
+  createLeftSection() {
+    let leftSection = <Left />;    
+    if (this.props.leftButtons) {
+      const leftButtons = this.props.leftButtons.map((element) =>
+         this.createButton(element)
+      );      
+      leftSection = (
+        <Left>
+          <View 
+            style={styles.leftSectionStyle}
+          >
+          { leftButtons }
+          </View>
+        </Left>
+      );
+    } 
+    return leftSection;
+  }
+  
+  createRightSection() {
+    let rightSection = <Right />
+    if (this.props.rightButtons) {
+      const rightButtons = this.props.rightButtons.map((element) =>       
+        this.createButton(element)
+      );
+      rightSection = (
+        <Right>
+          <View 
+            style={styles.rightSectionStyle}
+          >
+          { rightButtons }
+          </View>
+        </Right>
+      )
+    }
+    return rightSection;
   }
 
-  render(){
-    let leftButton = <Left />;
-    if (this.props.leftButtonIcon != null) {
-      leftButton = this.createLeftButton();
+  render() {
+    if (this.state.isFilterActive) {
+      return (
+        <SearchBar
+            handleOnTextChanged={(text) => {
+              const searchButton = 
+                this.props.rightButtons.find((element) => element.icon === 'search');
+              searchButton.action(text); 
+            }}
+            onBackButtonClicked={() => {
+              this.setState({
+                isFilterActive: false,
+              })
+            }}
+        />
+      );
     }
-
-    let rightButton = <Right />
-    if (this.props.rightButtonIcon != null) {
-      rightButton = this.createRightButton();
-    }
-
+    const leftSection = this.createLeftSection();
+    const rightSection = this.createRightSection();
+    
     return (
       <Header>
-        { leftButton }
+        { leftSection }
         <Body>
           <Title>{this.props.title}</Title>
         </Body>
-        { rightButton }
+        { rightSection }
       </Header>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  leftSectionStyle: {
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'flex-start', 
+    alignItems: 'center' 
+  },
+  rightSectionStyle: {
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'flex-end', 
+    alignItems: 'center' 
+  }
+})
