@@ -1,59 +1,90 @@
-import React, { Component } from 'react';
-import {
-  Alert
-} from 'react-native';
+import React from 'react';
 import {
   Container,
   List,
   ListItem,
+  Text,
 } from 'native-base';
 
 import styles from '../../styles/Styles';
 import { LoadingView } from '../LoadingView';
 import { BasicRow } from '../BasicRow';
-import { SearchBar } from '../SearchBar';
+import Toolbar from '../Toolbar';
 
 const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
-export default class TournamentListScreen extends Component {
+export default class TournamentListScreen extends React.Component {
+
+  static navigationOptions = ({ navigation }) => ({
+      header: (
+        <Toolbar 
+            navigation={navigation} 
+            title="Tournaments" 
+            leftButtons={[
+              {
+                icon: 'menu',
+                action: () => { navigation.navigate('DrawerOpen'); }
+              }
+            ]}
+            rightButtons={[
+              {
+                icon: 'search',
+                action: (text) => { navigation.state.params.filterTournaments(text); }
+              }
+            ]}          
+        />
+      )      
+  }) 
 
   constructor(props) {
       super(props);
-      this._data = [];
       this.state = {
-        loaded: false,
-        items: [],
+        isLoaded: false,
+        tournaments: [],
+        filteredTournaments: [],
+        isFilterActive: false,
       };
     }   
     
   componentDidMount() {
     this.fetchData();
-  }
+    this.props.navigation.setParams({
+      filterTournaments: (text) => this.filterTournaments(text),
+    })
+  } 
   
   fetchData() {
     fetch(REQUEST_URL)
       .then((response) => response.json())
-      .then((responseData) => {
-        this._data = this._data.concat(responseData.movies);
+      .then((responseData) => {        
+        const allTournaments = this.state.tournaments.concat(responseData.movies);
         this.setState({
-          items: this._data,
-          loaded: true,
+          tournaments: allTournaments,          
+          isLoaded: true,
+          isFilterActive: false,
          });
       })
       .done();
   }
   
+  filterTournaments(text) { 
+    if (this.state.isLoaded) {
+      if (text) {
+        const allFilteredTournaments = 
+          this.state.tournaments.filter((elemento) =>
+           elemento.title.toUpperCase().startsWith(text.toUpperCase()))
+        this.setState({
+          filteredTournaments: allFilteredTournaments,
+          isFilterActive: true,
+         });
+      } else {
+        this.setState({
+          isFilterActive: false,
+         });
+      }
+    }       
+  }  
   
-  handleEndReached() {
-     console.log('fire');
-     Alert.alert( 'Alert Title', 'My Alert Msg',
-     [ {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
-     {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-      {text: 'OK', onPress: () => console.log('OK Pressed')},],
-      { cancelable: false } )
-      this.fetchData();
-   }
-
   renderRow(tournament, sectionID, rowID) {
       return (
         <ListItem
@@ -68,23 +99,42 @@ export default class TournamentListScreen extends Component {
         </ListItem>
       );
     }
-
-  render() {
-    if (!this.state.loaded) {
-      return <LoadingView text='Loading from tournamentList' />;
+     
+    render() {
+      if (!this.state.isLoaded) {
+        return <LoadingView text='Loading from tournamentList' />;
+      }      
+            
+      if (this.state.isFilterActive) {
+        if (this.state.filteredTournaments.length > 0) {
+          return (
+            <Container>
+              <List
+                 listStyle={styles.listView}
+                 dataArray={this.state.filteredTournaments}
+                 renderRow={this.renderRow.bind(this)}
+              />
+            </Container>
+          )
+        }
+        return (
+          <Container>
+            <Text>Empty List</Text>
+          </Container>
+        );
+      }       
+      return (
+        <Container>
+          <List
+             listStyle={styles.listView}
+             dataArray={this.state.tournaments}
+             renderRow={this.renderRow.bind(this)}
+             //initialListSize={2}
+             //renderError={this.renderListError}
+             //enableEmptySections={true}
+             onEndReached={() => { this.fetchData(); }}
+          />
+        </Container>
+      );
     }
-
-    return (
-      <Container>
-                <List
-                   listStyle={styles.listView}
-                   dataArray={this.state.items}
-                   renderRow={this.renderRow.bind(this)}
-                   //initialListSize={2}
-                   //renderError={this.renderListError}
-                   //enableEmptySections={true}
-                   onEndReached={this.handleEndReached.bind(this)} />
-      </Container>
-    )
-  }
 }
