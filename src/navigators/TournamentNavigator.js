@@ -7,15 +7,7 @@ import Toolbar from '../components/Toolbar';
 
 const routeConfiguration = {
   TournamentList: {
-    screen: TournamentListScreen,
-    navigationOptions: ({ navigation }) => ({
-        header: (
-          <Toolbar 
-            navigation={navigation} 
-            title="Tournaments" leftButtonIcon="menu" rightButtonIcon="search" 
-          />
-        )
-    })
+    screen: TournamentListScreen  
   },
   TournamentDetail: {
     screen: TournamentDetailNavigator,
