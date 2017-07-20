@@ -8,12 +8,16 @@ import {
 import styles from '../../styles/Styles';
 
 export default class PositionsScreen extends Component{
-   render(){
+   render() {
+     const { id, title } = this.props.navigation.state.params;
     return(
       <Container>
         <Content>
           <Text>
-            POSICIONES
+            {id}
+          </Text>
+          <Text>
+            {title}
           </Text>
         </Content>
       </Container>

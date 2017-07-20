@@ -1,19 +1,26 @@
 import React, { Component } from 'react';
 import {
-  Text,
-  View
-} from 'react-native';
+  Container,
+  Content,
+  Text
+} from 'native-base';
 
-import styles from '../../styles/Styles';
+//import styles from '../../styles/Styles';
 
 export default class ScoresScreen extends Component{
-   render(){
-    return(
-      <View style={styles.container}>
-        <Text>
-          GOLEADORES
-        </Text>
-      </View>
+   render() {
+     const { id, title } = this.props.navigation.state.params;
+     return (
+       <Container>
+         <Content>
+           <Text>
+             {id}
+           </Text>
+           <Text>
+             {title}
+           </Text>
+         </Content>
+       </Container>
     );
   }
 }
