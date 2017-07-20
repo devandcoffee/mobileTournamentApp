@@ -83,14 +83,15 @@ export default class TournamentListScreen extends React.Component {
          });
       }
     }       
-  }  
+  }
   
   renderRow(tournament, sectionID, rowID) {
       return (
         <ListItem
           button
           onPress={() => 
-            this.props.navigation.navigate('TournamentDetail', { title: tournament.title })} 
+            this.props.navigation.navigate('TournamentDetail', 
+              { id: tournament.id, title: tournament.title })} 
         >
           <BasicRow
             mainText={tournament.title}

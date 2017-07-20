@@ -15,7 +15,19 @@ const routeConfiguration = {
         header: (
           <Toolbar 
             navigation={navigation} 
-            title={`${navigation.state.params.title} tournament`} leftButtonIcon="arrow-back"
+            title={`${navigation.state.params.title} tournament`} 
+            leftButtons={[
+              {
+                icon: 'arrow-back',
+                action: () => { navigation.goBack(); }
+              }
+            ]}
+            rightButtons={[
+              {
+                icon: 'calendar',
+                action: () => { navigation.goBack(); }
+              }
+            ]}
           />
         )
     })
