@@ -29,6 +29,7 @@ const tabBarConfiguration = {
   tabBarPosition: 'top',
   tabBarComponent: props => {
     console.log('tournamentDetailnavConfigProps', props);
+    const { id, title } = props.navigation.state.params;
     return (
       <Footer>
         <FooterTab>
@@ -36,7 +37,7 @@ const tabBarConfiguration = {
             vertical
             active={props.navigationState.index === 0}
             onPress={() => {
-              props.navigation.navigate('Fixture')
+              props.navigation.navigate('Fixture', { id, title })
             }}
           >
             <Text>Fixture</Text>
@@ -45,7 +46,7 @@ const tabBarConfiguration = {
             vertical
             active={props.navigationState.index === 1}
             onPress={() => {
-              props.navigation.navigate('Positions')
+              props.navigation.navigate('Positions', { id, title })
             }}
           >
             <Text>Positions</Text>
@@ -53,7 +54,7 @@ const tabBarConfiguration = {
           <Button
             vertical
             active={props.navigationState.index === 2}
-            onPress={() => props.navigation.navigate('Scores')}
+            onPress={() => props.navigation.navigate('Scores', { id, title })}
           >
             <Text>Scores</Text>
           </Button>
