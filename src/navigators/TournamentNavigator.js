@@ -34,4 +34,4 @@ const routeConfiguration = {
   }
 };
 
-export default TournamentNavigator = StackNavigator(routeConfiguration);
+export default TournamentNavigator = StackNavigator(routeConfiguration, { initialRouteName: 'TournamentList' });

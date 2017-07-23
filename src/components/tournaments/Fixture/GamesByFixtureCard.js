@@ -8,7 +8,6 @@ import {
   Text
 } from 'native-base';
 
-import styles from '../styles/Styles';
 import { GameRow } from './GameRow';
 
 export default class GamesByFixtureCard extends React.Component {
@@ -35,7 +34,6 @@ export default class GamesByFixtureCard extends React.Component {
             </Body>
           </CardItem>
           <List 
-            listStyle={styles.listView} 
             dataArray={games} 
             renderRow={this.renderGameRow.bind(this)}
           />
