@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Text } from 'native-base';
 import { Font } from 'expo';
 
-import AppNavigator from './src/navigators/AppNavigator';
+import { AppNavigator } from './src/navigators';
 
 export default class App extends React.Component {
   state = {
