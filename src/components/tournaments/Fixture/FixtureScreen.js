@@ -7,8 +7,7 @@ import {
   ListItem,
 } from 'native-base';
 
-import GamesByFixtureCard from '../GamesByFixtureCard';
-import styles from '../../styles/Styles';
+import GamesByFixtureCard from './GamesByFixtureCard';
 
 export default class FixtureScreen extends React.Component {
   renderGamesByFixtureCard(gamesByFixture, sectionID, rowID) {
@@ -47,7 +46,6 @@ export default class FixtureScreen extends React.Component {
              {title}
            </Text>
            <List 
-             listStyle={styles.listView} 
              dataArray={gamesByFixture} 
              renderRow={this.renderGamesByFixtureCard.bind(this)}
            />           

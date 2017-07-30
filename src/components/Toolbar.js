@@ -21,9 +21,10 @@ export default class Toolbar extends React.Component {
     };
   }
 
-  createButton(button) {
+  createButton(button, index) {
     return (
-      <Button 
+      <Button
+        key={index}
         transparent 
         onPress={() => {
           if (button.icon === 'search') {
@@ -43,8 +44,8 @@ export default class Toolbar extends React.Component {
   createLeftSection() {
     let leftSection = <Left />;    
     if (this.props.leftButtons) {
-      const leftButtons = this.props.leftButtons.map((element) =>
-         this.createButton(element)
+      const leftButtons = this.props.leftButtons.map((element, index) =>
+         this.createButton(element, index)
       );      
       leftSection = (
         <Left>
@@ -62,8 +63,8 @@ export default class Toolbar extends React.Component {
   createRightSection() {
     let rightSection = <Right />
     if (this.props.rightButtons) {
-      const rightButtons = this.props.rightButtons.map((element) =>       
-        this.createButton(element)
+      const rightButtons = this.props.rightButtons.map((element, index) =>       
+        this.createButton(element, index)
       );
       rightSection = (
         <Right>

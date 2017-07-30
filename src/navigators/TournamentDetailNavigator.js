@@ -8,8 +8,8 @@ import {
 } from 'native-base';
 
 
-import FixtureScreen from '../components/tournaments/FixtureScreen';
-import PositionsScreen from '../components/tournaments/PositionsScreen';
+import FixtureScreen from '../components/tournaments/Fixture/FixtureScreen';
+import PositionsScreen from '../components/tournaments/Positions/PositionsScreen';
 import ScoresScreen from '../components/tournaments/ScoresScreen';
 
 const routeConfiguration = {
@@ -25,6 +25,7 @@ const routeConfiguration = {
 }
 
 const tabBarConfiguration = {
+  initialRouteName: 'Fixture',
   backBehavior: true,
   tabBarPosition: 'top',
   tabBarComponent: props => {
