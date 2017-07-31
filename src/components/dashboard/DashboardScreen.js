@@ -5,7 +5,7 @@ import {
   Text
 } from 'native-base';
 
-import Toolbar from '../Toolbar';
+import { Toolbar } from '../shared';
 import styles from '../../styles/Styles';
 
 export default class DashboardScreen extends React.Component {

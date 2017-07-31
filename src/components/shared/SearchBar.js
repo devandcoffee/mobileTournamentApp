@@ -8,11 +8,11 @@ import {
   Text
 } from 'native-base';
 
-export const SearchBar = (props) => {
+const SearchBar = (props) => {
   const { onBackButtonClicked, handleOnTextChanged } = props;
   const clearText = () => {
     this.textInput.setNativeProps({ text: '' });
-  }
+  };
   return (
     <Header searchBar rounded>
       <Item>
@@ -45,4 +45,6 @@ export const SearchBar = (props) => {
       </Button>
     </Header>
   );
-}
+};
+
+export default SearchBar;

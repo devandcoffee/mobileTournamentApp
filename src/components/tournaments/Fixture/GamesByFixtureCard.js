@@ -11,7 +11,7 @@ import {
 import { GameRow } from './GameRow';
 
 export default class GamesByFixtureCard extends React.Component {
-  renderGameRow(game, sectionID, rowID) {
+  renderGameRow(game) {
     return (
       <ListItem 
         button //onPress={() =>   }}
@@ -53,4 +53,4 @@ let gamesByFixtureStyles = {
     flexDirection: 'row',
     justifyContent: 'flex-end'
   }
-}
+};

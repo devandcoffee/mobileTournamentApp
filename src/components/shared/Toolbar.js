@@ -10,9 +10,9 @@ import {
 } from 'native-base';
 import { View, StyleSheet } from 'react-native';
 
-import { SearchBar } from './SearchBar';
+import SearchBar from './SearchBar';
 
-export default class Toolbar extends React.Component {
+class Toolbar extends React.Component {
   
   constructor(props) {
     super(props);
@@ -30,7 +30,7 @@ export default class Toolbar extends React.Component {
           if (button.icon === 'search') {
             this.setState({
               isFilterActive: true,
-            })
+            });
           } else {
             button.action();
           }      
@@ -38,7 +38,7 @@ export default class Toolbar extends React.Component {
       >
         <Icon name={button.icon} />
       </Button>
-    )
+    );
   }
   
   createLeftSection() {
@@ -61,7 +61,7 @@ export default class Toolbar extends React.Component {
   }
   
   createRightSection() {
-    let rightSection = <Right />
+    let rightSection = <Right />;
     if (this.props.rightButtons) {
       const rightButtons = this.props.rightButtons.map((element, index) =>       
         this.createButton(element, index)
@@ -74,7 +74,7 @@ export default class Toolbar extends React.Component {
           { rightButtons }
           </View>
         </Right>
-      )
+      );
     }
     return rightSection;
   }
@@ -91,7 +91,7 @@ export default class Toolbar extends React.Component {
             onBackButtonClicked={() => {
               this.setState({
                 isFilterActive: false,
-              })
+              });
             }}
         />
       );
@@ -124,4 +124,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end', 
     alignItems: 'center' 
   }
-})
+});
+
+export default Toolbar;

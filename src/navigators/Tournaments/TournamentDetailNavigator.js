@@ -7,9 +7,7 @@ import {
   Text
 } from 'native-base';
 
-import FixtureScreen from '../../components/tournaments/Fixture/FixtureScreen';
-import PositionsScreen from '../../components/tournaments/Positions/PositionsScreen';
-import ScoresScreen from '../../components/tournaments/ScoresScreen';
+import { FixtureScreen, PositionsScreen, ScoresScreen } from '../../components/tournaments';
 
 const routeConfiguration = {
     Fixture: {

@@ -7,9 +7,7 @@ import {
 } from 'native-base';
 
 import styles from '../../styles/Styles';
-import { LoadingView } from '../LoadingView';
-import { BasicRow } from '../BasicRow';
-import Toolbar from '../Toolbar';
+import { BasicRow, Toolbar, LoadingView } from '../shared';
 
 const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -50,7 +48,7 @@ export default class TournamentListScreen extends React.Component {
     this.fetchData();
     this.props.navigation.setParams({
       filterTournaments: (text) => this.filterTournaments(text),
-    })
+    });
   } 
   
   fetchData() {
@@ -72,7 +70,7 @@ export default class TournamentListScreen extends React.Component {
       if (text) {
         const allFilteredTournaments = 
           this.state.tournaments.filter((elemento) =>
-           elemento.title.toUpperCase().startsWith(text.toUpperCase()))
+           elemento.title.toUpperCase().startsWith(text.toUpperCase()));
         this.setState({
           filteredTournaments: allFilteredTournaments,
           isFilterActive: true,
@@ -85,7 +83,7 @@ export default class TournamentListScreen extends React.Component {
     }       
   }
   
-  renderRow(tournament, sectionID, rowID) {
+  renderRow(tournament) {
       return (
         <ListItem
           button
@@ -116,7 +114,7 @@ export default class TournamentListScreen extends React.Component {
                  renderRow={this.renderRow.bind(this)}
               />
             </Container>
-          )
+          );
         }
         return (
           <Container>

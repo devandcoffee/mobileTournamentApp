@@ -10,7 +10,7 @@ import {
 import GamesByFixtureCard from './GamesByFixtureCard';
 
 export default class FixtureScreen extends React.Component {
-  renderGamesByFixtureCard(gamesByFixture, sectionID, rowID) {
+  renderGamesByFixtureCard(gamesByFixture) {
     return (
       <ListItem 
         button //onPress={() =>   }}

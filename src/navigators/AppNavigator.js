@@ -1,9 +1,9 @@
 import React from 'react';
 import { DrawerNavigator } from 'react-navigation';
 
-import DashboardScreen from '../components/dashboard/DashboardScreen';
+import { DashboardScreen } from '../components/dashboard';
 import { TournamentNavigator } from './Tournaments';
-import LeftMenu from '../components/LeftMenu';
+import { LeftMenu } from '../components/shared/';
 
 const routeConfiguration = {
   Dashboard: { screen: DashboardScreen },

@@ -18,7 +18,7 @@ export default class PositionsScreen extends Component {
       <ListItem>
         <TeamPositionRow teamPositionInfo={teamPositionInfo} />
       </ListItem>
-    )
+    );
   }
   
   render() {
@@ -53,7 +53,7 @@ export default class PositionsScreen extends Component {
            goals: '200/00',
            points: '90',
        },
-     ]
+     ];
      return (
       <Container>
         <Content style={{ padding: 10 }}>
@@ -119,4 +119,4 @@ let positionStyles = {
     fontFamily: 'Roboto',    
     fontSize: 12,
   },
-}
+};
