@@ -9,15 +9,18 @@ import {
 } from 'native-base';
 
 const routes = ['Dashboard', 'Tournament'];
+const drawerImage = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/drawer-cover.png';
+const logoImage = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/logo.png';
 
 class LeftMenu extends React.Component {
   render() {
+    const { navigation } = this.props;
     return (
       <Container>
         <Content>
           <Image
             source={{
-              uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/drawer-cover.png'
+              uri: drawerImage
             }}
             style={{
               height: 120,
@@ -30,7 +33,7 @@ class LeftMenu extends React.Component {
               square
               style={{ height: 80, width: 70 }}
               source={{
-                uri: 'https://github.com/GeekyAnts/NativeBase-KitchenSink/raw/react-navigation/img/logo.png'
+                uri: logoImage
               }}
             />
           </Image>
@@ -39,7 +42,7 @@ class LeftMenu extends React.Component {
             renderRow={data => (
               <ListItem
                 button
-                onPress={() => this.props.navigation.navigate(data)}
+                onPress={() => navigation.navigate(data)}
               >
                 <Text>{data}</Text>
               </ListItem>
