@@ -11,15 +11,14 @@ import {
 import { GameRow } from './GameRow';
 
 export default class GamesByFixtureCard extends React.Component {
-  renderGameRow(game) {
-    return (
-      <ListItem 
-        button //onPress={() =>   }}
-      >
-        <GameRow game={game} /> 
-      </ListItem>
-    );
-  }
+  renderGameRow = (game) =>
+  (
+    <ListItem 
+      button //onPress={() =>   }}
+    >
+      <GameRow game={game} /> 
+    </ListItem>
+  );  
 
   render() {
     const { games } = this.props;
@@ -35,7 +34,7 @@ export default class GamesByFixtureCard extends React.Component {
           </CardItem>
           <List 
             dataArray={games} 
-            renderRow={this.renderGameRow.bind(this)}
+            renderRow={item => this.renderGameRow(item)}
           />
         </Card>
     );

@@ -9,8 +9,8 @@ import {
 } from 'native-base';
 
 const routes = ['Dashboard', 'Tournament'];
-const drawerImage = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/drawer-cover.png';
-const logoImage = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/logo.png';
+const DRAWER_IMAGE = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/drawer-cover.png';
+const LOGO_IMAGE = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/logo.png';
 
 class LeftMenu extends React.Component {
   render() {
@@ -20,7 +20,7 @@ class LeftMenu extends React.Component {
         <Content>
           <Image
             source={{
-              uri: drawerImage
+              uri: DRAWER_IMAGE
             }}
             style={{
               height: 120,
@@ -33,7 +33,7 @@ class LeftMenu extends React.Component {
               square
               style={{ height: 80, width: 70 }}
               source={{
-                uri: logoImage
+                uri: LOGO_IMAGE
               }}
             />
           </Image>

@@ -83,21 +83,19 @@ export default class TournamentListScreen extends React.Component {
     }       
   }
   
-  renderRow(tournament) {
-      return (
-        <ListItem
-          button
-          onPress={() => 
-            this.props.navigation.navigate('TournamentDetail', 
-              { id: tournament.id, title: tournament.title })} 
-        >
-          <BasicRow
-            mainText={tournament.title}
-            secondaryText={tournament.year}
-          />
-        </ListItem>
-      );
-    }
+  renderRow = (tournament) => (
+      <ListItem
+        button
+        onPress={() =>
+          this.props.navigation.navigate('TournamentDetail',
+            { id: tournament.id, title: tournament.title })}
+      >
+        <BasicRow
+          mainText={tournament.title}
+          secondaryText={tournament.year}
+        />
+      </ListItem>
+    );
      
     render() {
       if (!this.state.isLoaded) {
@@ -111,7 +109,7 @@ export default class TournamentListScreen extends React.Component {
               <List
                  listStyle={styles.listView}
                  dataArray={this.state.filteredTournaments}
-                 renderRow={this.renderRow.bind(this)}
+                 renderRow={item => this.renderRow(item)}
               />
             </Container>
           );
@@ -127,7 +125,7 @@ export default class TournamentListScreen extends React.Component {
           <List
              listStyle={styles.listView}
              dataArray={this.state.tournaments}
-             renderRow={this.renderRow.bind(this)}
+             renderRow={item => this.renderRow(item)}
              //initialListSize={2}
              //renderError={this.renderListError}
              //enableEmptySections={true}
