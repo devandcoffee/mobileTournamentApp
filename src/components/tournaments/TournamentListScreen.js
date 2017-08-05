@@ -7,9 +7,7 @@ import {
 } from 'native-base';
 
 import styles from '../../styles/Styles';
-import { LoadingView } from '../LoadingView';
-import { BasicRow } from '../BasicRow';
-import Toolbar from '../Toolbar';
+import { BasicRow, Toolbar, LoadingView } from '../shared';
 
 const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -50,7 +48,7 @@ export default class TournamentListScreen extends React.Component {
     this.fetchData();
     this.props.navigation.setParams({
       filterTournaments: (text) => this.filterTournaments(text),
-    })
+    });
   } 
   
   fetchData() {
@@ -72,7 +70,7 @@ export default class TournamentListScreen extends React.Component {
       if (text) {
         const allFilteredTournaments = 
           this.state.tournaments.filter((elemento) =>
-           elemento.title.toUpperCase().startsWith(text.toUpperCase()))
+           elemento.title.toUpperCase().startsWith(text.toUpperCase()));
         this.setState({
           filteredTournaments: allFilteredTournaments,
           isFilterActive: true,
@@ -85,21 +83,19 @@ export default class TournamentListScreen extends React.Component {
     }       
   }
   
-  renderRow(tournament, sectionID, rowID) {
-      return (
-        <ListItem
-          button
-          onPress={() => 
-            this.props.navigation.navigate('TournamentDetail', 
-              { id: tournament.id, title: tournament.title })} 
-        >
-          <BasicRow
-            mainText={tournament.title}
-            secondaryText={tournament.year}
-          />
-        </ListItem>
-      );
-    }
+  renderRow = (tournament) => (
+      <ListItem
+        button
+        onPress={() =>
+          this.props.navigation.navigate('TournamentDetail',
+            { id: tournament.id, title: tournament.title })}
+      >
+        <BasicRow
+          mainText={tournament.title}
+          secondaryText={tournament.year}
+        />
+      </ListItem>
+    );
      
     render() {
       if (!this.state.isLoaded) {
@@ -113,10 +109,10 @@ export default class TournamentListScreen extends React.Component {
               <List
                  listStyle={styles.listView}
                  dataArray={this.state.filteredTournaments}
-                 renderRow={this.renderRow.bind(this)}
+                 renderRow={item => this.renderRow(item)}
               />
             </Container>
-          )
+          );
         }
         return (
           <Container>
@@ -129,7 +125,7 @@ export default class TournamentListScreen extends React.Component {
           <List
              listStyle={styles.listView}
              dataArray={this.state.tournaments}
-             renderRow={this.renderRow.bind(this)}
+             renderRow={item => this.renderRow(item)}
              //initialListSize={2}
              //renderError={this.renderListError}
              //enableEmptySections={true}

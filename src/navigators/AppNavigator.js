@@ -1,9 +1,9 @@
 import React from 'react';
 import { DrawerNavigator } from 'react-navigation';
 
-import DashboardScreen from '../components/dashboard/DashboardScreen';
-import TournamentNavigator from '../navigators/TournamentNavigator';
-import LeftMenu from '../components/LeftMenu';
+import { DashboardScreen } from '../components/dashboard';
+import { TournamentNavigator } from './Tournaments';
+import { LeftMenu } from '../components/shared/';
 
 const routeConfiguration = {
   Dashboard: { screen: DashboardScreen },
@@ -15,4 +15,6 @@ const drawerConfiguration = {
   contentComponent: props => <LeftMenu {...props} />
 };
 
-export default AppNavigator = DrawerNavigator(routeConfiguration, drawerConfiguration);
+const AppNavigator = DrawerNavigator(routeConfiguration, drawerConfiguration);
+
+export default AppNavigator;

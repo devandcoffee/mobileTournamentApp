@@ -7,10 +7,7 @@ import {
   Text
 } from 'native-base';
 
-
-import FixtureScreen from '../components/tournaments/Fixture/FixtureScreen';
-import PositionsScreen from '../components/tournaments/Positions/PositionsScreen';
-import ScoresScreen from '../components/tournaments/ScoresScreen';
+import { FixtureScreen, PositionsScreen, ScoresScreen } from '../../components/tournaments';
 
 const routeConfiguration = {
     Fixture: {
@@ -22,7 +19,7 @@ const routeConfiguration = {
     Scores: {
       screen: ScoresScreen
     }
-}
+};
 
 const tabBarConfiguration = {
   initialRouteName: 'Fixture',
@@ -38,7 +35,7 @@ const tabBarConfiguration = {
             vertical
             active={props.navigationState.index === 0}
             onPress={() => {
-              props.navigation.navigate('Fixture', { id, title })
+              props.navigation.navigate('Fixture', { id, title });
             }}
           >
             <Text>Fixture</Text>
@@ -47,7 +44,7 @@ const tabBarConfiguration = {
             vertical
             active={props.navigationState.index === 1}
             onPress={() => {
-              props.navigation.navigate('Positions', { id, title })
+              props.navigation.navigate('Positions', { id, title });
             }}
           >
             <Text>Positions</Text>
@@ -63,7 +60,8 @@ const tabBarConfiguration = {
       </Footer>
     );
   }
-}
+};
 
-export default TournamentDetailNavigator =
-  TabNavigator(routeConfiguration, tabBarConfiguration);
+const TournamentDetailNavigator = TabNavigator(routeConfiguration, tabBarConfiguration);
+  
+export default TournamentDetailNavigator;

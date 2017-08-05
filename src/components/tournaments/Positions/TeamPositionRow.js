@@ -29,7 +29,7 @@ export const TeamPositionRow = (props) => {
       </Body>       
     </Body>              
   );
-}
+};
 
 let teamPositionStyles = {
   container: {
@@ -88,4 +88,4 @@ let teamPositionStyles = {
     fontFamily: 'Roboto_medium',
     fontSize: 12,
   }
-}
+};

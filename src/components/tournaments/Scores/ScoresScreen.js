@@ -7,7 +7,7 @@ import {
 
 //import styles from '../../styles/Styles';
 
-export default class ScoresScreen extends Component{
+export default class ScoresScreen extends Component {
    render() {
      const { id, title } = this.props.navigation.state.params;
      return (

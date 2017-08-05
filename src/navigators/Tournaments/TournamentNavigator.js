@@ -1,13 +1,13 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import TournamentListScreen from '../components/tournaments/TournamentListScreen';
+import { TournamentListScreen } from '../../components/tournaments';
 import TournamentDetailNavigator from './TournamentDetailNavigator';
-import Toolbar from '../components/Toolbar';
+import { Toolbar } from '../../components/shared';
 
 const routeConfiguration = {
   TournamentList: {
-    screen: TournamentListScreen  
+    screen: TournamentListScreen
   },
   TournamentDetail: {
     screen: TournamentDetailNavigator,
@@ -34,4 +34,9 @@ const routeConfiguration = {
   }
 };
 
-export default TournamentNavigator = StackNavigator(routeConfiguration, { initialRouteName: 'TournamentList' });
+const TournamentNavigator = StackNavigator(
+  routeConfiguration, 
+  { initialRouteName: 'TournamentList' }
+);
+
+export default TournamentNavigator;

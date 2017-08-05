@@ -40,7 +40,7 @@ export const GameRow = (props) => {
       </Body>
     </Body>
   ); 
-}
+};
 
 let gameRowStyles = {
   container: {
@@ -98,4 +98,4 @@ let gameRowStyles = {
      justifyContent: 'center',
       alignItems: 'center' 
   }
-}
+};

@@ -13,13 +13,11 @@ import {
 import { TeamPositionRow } from './TeamPositionRow';
 
 export default class PositionsScreen extends Component {
-  renderTeamPositionRow(teamPositionInfo) {
-    return (
-      <ListItem>
+  renderTeamPositionRow = (teamPositionInfo) => (
+    <ListItem>
         <TeamPositionRow teamPositionInfo={teamPositionInfo} />
-      </ListItem>
-    )
-  }
+    </ListItem>
+  );  
   
   render() {
      const teamsPosition = [
@@ -53,7 +51,7 @@ export default class PositionsScreen extends Component {
            goals: '200/00',
            points: '90',
        },
-     ]
+     ];
      return (
       <Container>
         <Content style={{ padding: 10 }}>
@@ -73,7 +71,7 @@ export default class PositionsScreen extends Component {
             </CardItem>  
             <List
               dataArray={teamsPosition}
-              renderRow={this.renderTeamPositionRow.bind(this)}
+              renderRow={item => this.renderTeamPositionRow(item)}
             />                   
           </Card>
         </Content>
@@ -119,4 +117,4 @@ let positionStyles = {
     fontFamily: 'Roboto',    
     fontSize: 12,
   },
-}
+};
