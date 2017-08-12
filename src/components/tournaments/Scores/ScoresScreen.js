@@ -36,7 +36,7 @@ class ScoresScreen extends Component {
 
      return (
        <Container>
-         <Content>
+         <Content style={{ padding: 10 }}>
            <Text>
              {id}
            </Text>
@@ -45,10 +45,8 @@ class ScoresScreen extends Component {
            </Text>
            <TournamentList
              dataSource={list}
-             columns={{
-              leftSection: ['position', 'image', 'teamName'],
-              rightSection: ['jugados', 'cabeza', 'tiroLibre', 'penales', 'tota'],
-            }}
+             leftColumns={['position', 'image', 'teamName']}
+             rightColumns={['jugados', 'cabeza', 'tiroLibre', 'penales', 'tota']}
            />
          </Content>
        </Container>
