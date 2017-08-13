@@ -1,14 +1,10 @@
 import React from 'react';
-import {
-  Body,
-  Text,
-  Thumbnail,
-} from 'native-base';
+import { Body, Text, Thumbnail } from 'native-base';
 import PropTypes from 'prop-types';
 
 import Styles from '../Styles';
 
-const TournamentListRow = (props) => {
+const TournamentListRow = props => {
   const { rowData, leftColumns, rightColumns } = props;
 
   const createRightSection = () => {
@@ -17,13 +13,16 @@ const TournamentListRow = (props) => {
     rightSection = rightColumns.map((key, index) => {
       let columnTextStyle;
       if (rightSectionColumnsLength === index + 1) {
-        columnTextStyle = Styles.rightSectionBoldText;
+        columnTextStyle = Styles.rightSectionLastText;
       } else {
-        columnTextStyle = rowData[key].lenght > 3 ?
-          Styles.rightSectionLargeText : Styles.rightSectionText;
+        columnTextStyle = Styles.rightSectionText;
       }
 
-      return <Text key={key} style={columnTextStyle}>{rowData[key]}</Text>;
+      return (
+        <Text key={key} style={columnTextStyle}>
+          {rowData[key]}
+        </Text>
+      );
     });
     return rightSection;
   };
@@ -31,22 +30,17 @@ const TournamentListRow = (props) => {
   return (
     <Body style={Styles.container}>
       <Body style={Styles.leftSection}>
-        <Text
-          style={Styles.detailText}
-        >
+        <Text style={Styles.detailText}>
           {rowData[leftColumns[0]]}
         </Text>
-        <Thumbnail
-          square
-          small
-          style={Styles.image}
-          source={{ uri: rowData[leftColumns[1]] }}
-        />
-        <Text style={Styles.mainText}>{rowData[leftColumns[2]]}</Text>
+        <Thumbnail square style={Styles.image} source={{ uri: rowData[leftColumns[1]] }} />
+        <Text style={Styles.mainText}>
+          {rowData[leftColumns[2]]}
+        </Text>
       </Body>
 
       <Body style={Styles.rightSection}>
-        { createRightSection() }
+        {createRightSection()}
       </Body>
     </Body>
   );
@@ -55,7 +49,7 @@ const TournamentListRow = (props) => {
 TournamentListRow.propTypes = {
   rowData: PropTypes.object.isRequired,
   leftColumns: PropTypes.array.isRequired,
-  rightColumns: PropTypes.array.isRequired,
+  rightColumns: PropTypes.array.isRequired
 };
 
 export default TournamentListRow;

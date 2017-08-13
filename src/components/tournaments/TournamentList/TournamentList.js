@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Body,
-  Card,
-  CardItem,
-  List,
-  ListItem,
-  Text,
-} from 'native-base';
+import { Body, Card, CardItem, List, ListItem, Text } from 'native-base';
 import PropTypes from 'prop-types';
 
 import Styles from './Styles';
@@ -17,33 +10,38 @@ class TournamentList extends React.Component {
     let rightSection = <Body />;
     const rightSectionColumnsLength = rightColumns.length;
     rightSection = rightColumns.map((column, index) => {
-      const columnText = column.length > 4 ?
-        column.charAt(0).toUpperCase() :
-        column.toUpperCase();
-
+      let columnText;
       let columnStyle;
+
       if (rightSectionColumnsLength === index + 1) {
-        columnStyle = Styles.rightSectionBoldText;
+        columnStyle = Styles.rightSectionLastText;
+        columnText =
+          column.length > 6
+            ? column.charAt(0).toUpperCase() + column.slice(1, 4)
+            : column.charAt(0).toUpperCase() + column.slice(1);
       } else {
-        columnStyle = columnText.length === 1 ?
-          Styles.rightSectionText : Styles.rightSectionLargeText;
+        columnText = column.charAt(0).toUpperCase();
+        columnStyle = Styles.rightSectionText;
       }
 
-      return <Text key={index} style={columnStyle}>{columnText}</Text>;
+      return (
+        <Text key={index} style={columnStyle}>
+          {columnText}
+        </Text>
+      );
     });
     return rightSection;
   };
 
-  renderTournamentListRow = (item, leftColumns, rightColumns) => (
-     <ListItem
-       button
-       // onPress={() =>
-       //   this.props.navigation.navigate('TournamentDetail',
-       //     { id: tournament.id, title: tournament.title })}
-     >
-       <TournamentListRow rowData={item} leftColumns={leftColumns} rightColumns={rightColumns} />
-     </ListItem>
-   );
+  renderTournamentListRow = (item, leftColumns, rightColumns) =>
+    <ListItem
+      button
+      // onPress={() =>
+      //   this.props.navigation.navigate('TournamentDetail',
+      //     { id: tournament.id, title: tournament.title })}
+    >
+      <TournamentListRow rowData={item} leftColumns={leftColumns} rightColumns={rightColumns} />
+    </ListItem>;
 
   render() {
     const { dataSource, leftColumns, rightColumns } = this.props;
@@ -51,10 +49,12 @@ class TournamentList extends React.Component {
       <Card>
         <CardItem header>
           <Body style={Styles.leftSection}>
-            <Text style={Styles.mainText}>{leftColumns[0].toUpperCase()}</Text>
+            <Text style={Styles.mainText}>
+              {leftColumns[0].toUpperCase()}
+            </Text>
           </Body>
           <Body style={Styles.rightSection}>
-            { this.createRightSection(dataSource, rightColumns) }
+            {this.createRightSection(dataSource, rightColumns)}
           </Body>
         </CardItem>
         <List
@@ -69,7 +69,7 @@ class TournamentList extends React.Component {
 TournamentList.propTypes = {
   dataSource: PropTypes.array.isRequired,
   leftColumns: PropTypes.array.isRequired,
-  rightColumns: PropTypes.array.isRequired,
+  rightColumns: PropTypes.array.isRequired
 };
 
 export default TournamentList;

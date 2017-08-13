@@ -1,29 +1,31 @@
 const Styles = {
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'stretch'
   },
   leftSection: {
-    flex: 4,
+    flex: 5,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    marginRight: 5,
+    marginRight: 5
   },
   rightSection: {
-    flex: 6,
+    flex: 5,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },  
+    justifyContent: 'flex-end'
+  },
   detailText: {
     flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'Roboto_medium',    
-    fontSize: 12,
-    textAlign: 'center',
+    fontFamily: 'Roboto_medium',
+    fontSize: 11,
+    textAlign: 'center'
   },
   image: {
-    flex: 3,
+    width: 40,
+    height: 40
   },
   mainText: {
     flex: 5,
@@ -31,29 +33,26 @@ const Styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    fontFamily: 'Roboto', 
-    fontSize: 12,
-    marginLeft: 5,    
+    fontFamily: 'Roboto',
+    fontSize: 11,
+    marginLeft: 5
   },
   rightSectionText: {
     flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     textAlign: 'center',
-    marginRight: 3,
-    fontFamily: 'Roboto',    
-    fontSize: 12,
+    marginRight: 2,
+    fontFamily: 'Roboto',
+    fontSize: 11
   },
-  rightSectionLargeText: {
+  rightSectionLastText: {
     flex: 2,
-    textAlign: 'center',
-    marginRight: 3,
-    fontFamily: 'Roboto',    
-    fontSize: 12,
-  },
-  rightSectionBoldText: {
-    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     textAlign: 'center',
     fontFamily: 'Roboto_medium',
-    fontSize: 12,
+    fontSize: 11
   }
 };
 
