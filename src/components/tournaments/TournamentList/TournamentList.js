@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Styles from './Styles';
 import { TournamentListRow } from './TournamentListRow';
 
-class TournamentList extends React.Component {
-  createRightSection = (dataSource, rightColumns) => {
+const TournamentList = props => {
+  const createRightSection = (dataSource, rightColumns) => {
     let rightSection = <Body />;
     const rightSectionColumnsLength = rightColumns.length;
     rightSection = rightColumns.map((column, index) => {
@@ -33,7 +33,7 @@ class TournamentList extends React.Component {
     return rightSection;
   };
 
-  renderTournamentListRow = (item, leftColumns, rightColumns) =>
+  const renderTournamentListRow = (item, leftColumns, rightColumns) =>
     <ListItem
       button
       // onPress={() =>
@@ -43,28 +43,26 @@ class TournamentList extends React.Component {
       <TournamentListRow rowData={item} leftColumns={leftColumns} rightColumns={rightColumns} />
     </ListItem>;
 
-  render() {
-    const { dataSource, leftColumns, rightColumns } = this.props;
-    return (
-      <Card>
-        <CardItem header>
-          <Body style={Styles.leftSection}>
-            <Text style={Styles.mainText}>
-              {leftColumns[0].toUpperCase()}
-            </Text>
-          </Body>
-          <Body style={Styles.rightSection}>
-            {this.createRightSection(dataSource, rightColumns)}
-          </Body>
-        </CardItem>
-        <List
-          dataArray={dataSource}
-          renderRow={item => this.renderTournamentListRow(item, leftColumns, rightColumns)}
-        />
-      </Card>
-    );
-  }
-}
+  const { dataSource, leftColumns, rightColumns } = props;
+  return (
+    <Card>
+      <CardItem header>
+        <Body style={Styles.leftSection}>
+          <Text style={Styles.mainText}>
+            {leftColumns[0].toUpperCase()}
+          </Text>
+        </Body>
+        <Body style={Styles.rightSection}>
+          {createRightSection(dataSource, rightColumns)}
+        </Body>
+      </CardItem>
+      <List
+        dataArray={dataSource}
+        renderRow={item => renderTournamentListRow(item, leftColumns, rightColumns)}
+      />
+    </Card>
+  );
+};
 
 TournamentList.propTypes = {
   dataSource: PropTypes.array.isRequired,
