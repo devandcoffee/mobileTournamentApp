@@ -1,15 +1,10 @@
 import React from 'react';
 import { Image } from 'react-native';
-import {
-  Text,
-  Container,
-  List,
-  ListItem,
-  Content,
-} from 'native-base';
+import { Text, Container, List, ListItem, Content } from 'native-base';
 
-const routes = ['Dashboard', 'Tournament'];
-const DRAWER_IMAGE = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/drawer-cover.png';
+const routes = ['Dashboard', 'Tournament', 'MyTeams'];
+const DRAWER_IMAGE =
+  'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/drawer-cover.png';
 const LOGO_IMAGE = 'https://github.com/GeekyAnts/NativeBase-KitchenSink/blob/master/img/logo.png';
 
 class LeftMenu extends React.Component {
@@ -39,14 +34,12 @@ class LeftMenu extends React.Component {
           </Image>
           <List
             dataArray={routes}
-            renderRow={data => (
-              <ListItem
-                button
-                onPress={() => navigation.navigate(data)}
-              >
-                <Text>{data}</Text>
-              </ListItem>
-            )}
+            renderRow={data =>
+              <ListItem button onPress={() => navigation.navigate(data)}>
+                <Text>
+                  {data}
+                </Text>
+              </ListItem>}
           />
         </Content>
       </Container>

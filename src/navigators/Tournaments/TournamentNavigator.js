@@ -12,31 +12,34 @@ const routeConfiguration = {
   TournamentDetail: {
     screen: TournamentDetailNavigator,
     navigationOptions: ({ navigation }) => ({
-        header: (
-          <Toolbar 
-            navigation={navigation} 
-            title={`${navigation.state.params.title} tournament`} 
-            leftButtons={[
-              {
-                icon: 'arrow-back',
-                action: () => { navigation.goBack(); }
+      header: (
+        <Toolbar
+          navigation={navigation}
+          title={`${navigation.state.params.title} tournament`}
+          leftButtons={[
+            {
+              icon: 'arrow-back',
+              action: () => {
+                navigation.goBack();
               }
-            ]}
-            rightButtons={[
-              {
-                icon: 'calendar',
-                action: () => { navigation.goBack(); }
+            }
+          ]}
+          rightButtons={[
+            {
+              icon: 'calendar',
+              action: () => {
+                navigation.goBack();
               }
-            ]}
-          />
-        )
+            }
+          ]}
+        />
+      )
     })
   }
 };
 
-const TournamentNavigator = StackNavigator(
-  routeConfiguration, 
-  { initialRouteName: 'TournamentList' }
-);
+const TournamentNavigator = StackNavigator(routeConfiguration, {
+  initialRouteName: 'TournamentList'
+});
 
 export default TournamentNavigator;
