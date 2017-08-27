@@ -2,7 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
 import { TeamListScreen } from '../../components/teams';
-import MyTeamDetailNavigator from './MyTeamDetailNavigator';
+import { MyTeamDetailNavigator } from './MyTeamDetail';
 import { Toolbar } from '../../components/shared';
 
 const routeConfiguration = {
@@ -15,7 +15,7 @@ const routeConfiguration = {
       header: (
         <Toolbar
           navigation={navigation}
-          title={`${navigation.state.params.title} tournament`}
+          title={'My Team'}
           leftButtons={[
             {
               icon: 'arrow-back',
