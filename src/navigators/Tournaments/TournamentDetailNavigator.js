@@ -1,24 +1,20 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import {
-  Footer,
-  FooterTab,
-  Button,
-  Text
-} from 'native-base';
+import { Footer, FooterTab, Button, Text } from 'native-base';
 
-import { FixtureScreen, PositionsScreen, ScoresScreen } from '../../components/tournaments';
+import { FixtureScreen } from '../../components/shared';
+import { PositionsScreen, ScoresScreen } from '../../components/tournaments';
 
 const routeConfiguration = {
-    Fixture: {
-      screen: FixtureScreen
-    },
-    Positions: {
-      screen: PositionsScreen
-    },
-    Scores: {
-      screen: ScoresScreen
-    }
+  Fixture: {
+    screen: FixtureScreen
+  },
+  Positions: {
+    screen: PositionsScreen
+  },
+  Scores: {
+    screen: ScoresScreen
+  }
 };
 
 const tabBarConfiguration = {
@@ -26,7 +22,6 @@ const tabBarConfiguration = {
   backBehavior: true,
   tabBarPosition: 'top',
   tabBarComponent: props => {
-    console.log('tournamentDetailnavConfigProps', props);
     const { id, title } = props.navigation.state.params;
     return (
       <Footer>
@@ -63,5 +58,5 @@ const tabBarConfiguration = {
 };
 
 const TournamentDetailNavigator = TabNavigator(routeConfiguration, tabBarConfiguration);
-  
+
 export default TournamentDetailNavigator;

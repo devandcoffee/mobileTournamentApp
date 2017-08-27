@@ -84,9 +84,8 @@ class TeamListScreen extends React.Component {
   renderRow = team =>
     <ListItem
       button
-      // onPress={() =>
-      //   this.props.navigation.navigate('TournamentDetail',
-      //     { id: tournament.id, title: tournament.title })}
+      onPress={() =>
+        this.props.navigation.navigate('MyTeamDetail', { id: team.id, title: team.title })}
     >
       <BasicRow mainText={team.title} secondaryText={team.year} />
     </ListItem>;
