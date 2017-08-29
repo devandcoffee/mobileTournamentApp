@@ -3,11 +3,13 @@ import { DrawerNavigator } from 'react-navigation';
 
 import { DashboardScreen } from '../components/dashboard';
 import { TournamentNavigator } from './Tournaments';
+import { MyTeamsNavigator } from './MyTeams';
 import { LeftMenu } from '../components/shared/';
 
 const routeConfiguration = {
   Dashboard: { screen: DashboardScreen },
-  Tournament: { screen: TournamentNavigator }
+  Tournament: { screen: TournamentNavigator },
+  MyTeams: { screen: MyTeamsNavigator }
 };
 
 const drawerConfiguration = {

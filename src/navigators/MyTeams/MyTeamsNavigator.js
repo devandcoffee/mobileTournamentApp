@@ -1,21 +1,21 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 
-import { TournamentListScreen } from '../../components/tournaments';
-import TournamentDetailNavigator from './TournamentDetailNavigator';
+import { TeamListScreen } from '../../components/teams';
+import { MyTeamDetailNavigator } from './MyTeamDetail';
 import { Toolbar } from '../../components/shared';
 
 const routeConfiguration = {
-  TournamentList: {
-    screen: TournamentListScreen
+  MyTeamsList: {
+    screen: TeamListScreen
   },
-  TournamentDetail: {
-    screen: TournamentDetailNavigator,
+  MyTeamDetail: {
+    screen: MyTeamDetailNavigator,
     navigationOptions: ({ navigation }) => ({
       header: (
         <Toolbar
           navigation={navigation}
-          title={`${navigation.state.params.title} tournament`}
+          title={'My Team'}
           leftButtons={[
             {
               icon: 'arrow-back',
@@ -38,8 +38,6 @@ const routeConfiguration = {
   }
 };
 
-const TournamentNavigator = StackNavigator(routeConfiguration, {
-  initialRouteName: 'TournamentList'
-});
+const MyTeamNavigator = StackNavigator(routeConfiguration, { initialRouteName: 'MyTeamsList' });
 
-export default TournamentNavigator;
+export default MyTeamNavigator;
