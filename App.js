@@ -27,11 +27,7 @@ export default class App extends React.Component {
     }
 
     return (
-      <Container
-        style={{
-          paddingTop: 22
-        }}
-      >
+      <Container>
         <AppNavigator />
       </Container>
     );
