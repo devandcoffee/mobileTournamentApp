@@ -1,6 +1,8 @@
 import React from 'react';
-import { Container, Text } from 'native-base';
 import { Font } from 'expo';
+import { Container, Text, StyleProvider } from 'native-base';
+import getTheme from './native-base-theme/components';
+import material from './native-base-theme/variables/material';
 
 import { AppNavigator } from './src/navigators';
 
@@ -15,7 +17,7 @@ export default class App extends React.Component {
 
   loadAssetsAsync = async () => {
     await Font.loadAsync({
-      Roboto: require('native-base/Fonts/Roboto.ttf'),
+      Roboto: require('native-basme/Fonts/Roboto.ttf'),
       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
     });
     this.setState({ loaded: true });
@@ -27,13 +29,11 @@ export default class App extends React.Component {
     }
 
     return (
-      <Container
-        style={{
-          paddingTop: 22
-        }}
-      >
-        <AppNavigator />
-      </Container>
+      <StyleProvider style={getTheme(material)}>
+        <Container>
+          <AppNavigator />
+        </Container>
+      </StyleProvider>
     );
   }
 }
