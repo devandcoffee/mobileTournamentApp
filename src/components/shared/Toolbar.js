@@ -1,17 +1,7 @@
 import React from 'react';
-import {
-  Header,
-  Title,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Container,
-  Content,
-  Text
-} from 'native-base';
+import { Header, Title, Button, Left, Right, Body, Icon } from 'native-base';
 import { View, StyleSheet } from 'react-native';
+import { Styles as GeneralStyles } from '../../styles';
 
 import SearchBar from './SearchBar';
 
@@ -97,7 +87,7 @@ class Toolbar extends React.Component {
     const rightSection = this.createRightSection();
 
     return (
-      <Header>
+      <Header style={GeneralStyles.header}>
         {leftSection}
         <Body>
           <Title>

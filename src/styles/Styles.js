@@ -1,14 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 
-export default StyleSheet.create({
-  listView: {
-    paddingTop: 20,
-    backgroundColor: '#F5FCFF',
-  },
-  container: {
+const Styles = {
+  flexRow: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'row'
+  },
+  header: {
+    marginTop: StatusBar.currentHeight
   }
-})
+};
+
+export default Styles;
